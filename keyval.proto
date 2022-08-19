@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+
+package keyval;
+
+// Defines the service
+service KeyVal {
+    // Function invoked to send the request
+    rpc GET (GetRequest) returns (GetReply) {}
+    rpc PUT (PutRequest) returns (PutReply) {}
+    rpc DEL (DelRequest) returns (DelReply) {}
+}
+
+// The request message containing requested numbers
+message GetRequest {
+    string key = 1;
+}
+
+message GetReply {
+    string val = 2;
+    int32 status = 3;
+}
+
+message PutRequest {
+    string key = 4;
+    string val = 5;
+}
+
+message PutReply {
+    string err = 6;
+    int32 status = 7;
+}
+
+message DelRequest {
+    string key = 8;
+}
+
+message DelReply {
+    string err = 9;
+    int32 status = 10;
+}
